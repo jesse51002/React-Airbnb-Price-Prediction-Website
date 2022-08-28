@@ -1,7 +1,6 @@
 import './Question.css'
 import Dropdown from './Dropdown.js';
-
-
+import React from 'react'
 
 function Question({id='NoId', labalText='No Label', type='Text', options=[]}){
 

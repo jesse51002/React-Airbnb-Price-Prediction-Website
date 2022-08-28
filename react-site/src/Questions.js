@@ -1,6 +1,11 @@
 import './Questions.css';
 import Question from './Question.js';
-import {useRef} from 'react';
+import React, {useRef} from 'react';
+import Geocode from "react-geocode";
+import axios from 'axios';
+
+Geocode.setApiKey("AIzaSyDJO39qvhsgf5OkpWCK6EjN3L8aSmuyNh8");
+Geocode.setRegion("na")
 
 function Questions(){
     const qGroup1Ref = useRef(null);
@@ -27,24 +32,41 @@ function Questions(){
         group2.style.display = 'None';             
     }
 
-    
-    function getPrice(event){
+    async function getGeocode(location) {
+        let address = location.Street.split(" ").join("+")
+        let city = location.City.split(" ").join("+")
+        let state = location.State
+        let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address},+${city},+${state}&key=AIzaSyDJO39qvhsgf5OkpWCK6EjN3L8aSmuyNh8`
+            
+        const response = await axios.get(url)
+        const data = response.data.results[0]
+        const coords = {
+            name: data.formatted_address,
+            position: {
+                lat: data.geometry.location.lat,
+                lng: data.geometry.location.lng
+            }
+        }
+        return coords
+    }
+
+    async function getPrice(event){
         event.preventDefault()
 
         const form = formRef.current;
 
         const formElements = form.elements;
         
-        var importInfo = {
+        var addressInfo = {
             Street: formElements.StreetAddress.value,
-            City: formElements.StreetAddress.value,
-            State: formElements.StreetAddress.value,
-            Country: formElements.StreetAddress.value,
-            Street: formElements.StreetAddress.value,
+            City: formElements.City.value,
+            State: formElements.State.value,
+            Country: formElements.Country.value
         }
 
-        console.log()
+        var cords = await getGeocode(addressInfo);
 
+        console.log(cords);
     }
     
     return (
