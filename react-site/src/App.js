@@ -12,7 +12,7 @@ function App() {
       </header>
 
       <div className="MainBodyDiv" >
-          <Questions/>
+          {<Questions/>}
       </div>
 
     </div>

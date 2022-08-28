@@ -1,10 +1,12 @@
 import './Question.css'
-import {useRef} from 'react';
+import Dropdown from './Dropdown.js';
 
 
 
 function Question({id='NoId', labalText='No Label', type='Text', options=[]}){
-    
+
+
+
     const textJSX = (
         <div className="QuestionHolder">  
             <div className="TextLabelDiv">
@@ -19,12 +21,6 @@ function Question({id='NoId', labalText='No Label', type='Text', options=[]}){
         </div>
     )
     
-    const dropRef = useRef(null) 
-
-    function handleDropPress(val){
-        const input = dropRef.current;
-        input.value = val.target.textContent;
-    }
     
     const dropDownJSX = (
         <div className="QuestionHolder" id={`${id}`}>  
@@ -34,24 +30,7 @@ function Question({id='NoId', labalText='No Label', type='Text', options=[]}){
                 </label>
             </div>
 
-            <div className='Dropdown'>
-
-                <input ref={dropRef} className='DropInput' type="text" id={`${id}Input`} name={`${id}`} readOnly>
-                </input>
-                
-                <div className='DropValues'>
-                    {
-                       options.map(val => 
-                       {
-                        return <button className='DropVal' onClick={handleDropPress}>
-                            <p className='DropValText'>{val}</p>
-                        </button>
-                        }
-                        )
-                    }
-                </div>
-
-            </div>
+            <Dropdown id={id} options={options} />
 
         </div>
     )
