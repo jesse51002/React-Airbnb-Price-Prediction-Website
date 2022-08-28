@@ -1,0 +1,55 @@
+.QuestionsHolder{
+
+    width: 600px;
+
+    display: flex;
+    background-color: rgba(228, 153, 33, 0.7);
+    border: 10px solid;
+    padding: 10px;
+
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.QuestionDirections{
+    text-align: center;
+    font-size: 25px;
+}
+
+.QuestionRow{
+    display: flex;
+    flex-direction: row;
+
+
+    padding: 10px 0;
+}
+
+.ButtonHolder{
+    display: flex;
+
+}
+
+.Button{
+    flex: 1;
+    max-width: 200px;
+
+    height: 60px;
+    margin: auto;
+    background-color: orange;
+    border: 5px solid white;
+    font-size: 20px;
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Button:hover {
+
+    background-color: rgb(255, 207, 117);
+
+}
+

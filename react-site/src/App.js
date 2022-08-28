@@ -1,25 +1,23 @@
- import logo from './logo.svg';
-import './App.css';
+//import bnbLogo from './Airbnb_Logo.png';
+import "./App.css";
+import Questions from './Questions.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="GlobalContainer" style={{ backgroundImage: "url(/AirbnbBackground.jpg)"}}>
+      <header className='AirbnbHeader'>
+        <div className="AirbnbTitleDiv">
+          <h1 className='HeaderTitle'>New York Airbnb Price Recommendation</h1>
+        </div>
       </header>
+
+      <div className="MainBodyDiv" >
+          <Questions/>
+      </div>
+
     </div>
   );
+
 }
 
 export default App;
